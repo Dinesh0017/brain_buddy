@@ -60,7 +60,7 @@ class WelcomeScreen extends StatelessWidget {
                     backgroundColor: AppColors.primary,
                     textColor: AppColors.textPrimary,
                     onPressed: () {
-                      Navigator.pushNamed(context, '/signup-login');
+                      Navigator.pushNamed(context, '/signup_login_screen');
                     },
                   ),
                 ],

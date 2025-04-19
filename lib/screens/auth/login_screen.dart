@@ -17,7 +17,7 @@ class LoginScreen extends StatelessWidget {
             child: Center(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Text(
                     'Log In',
@@ -35,7 +35,7 @@ class LoginScreen extends StatelessWidget {
                       hintText: 'Email or Phone',
                       hintStyle: const TextStyle(color: Colors.grey),
                       enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.white24),
+                        borderSide: const BorderSide(color: Colors.white),
                         borderRadius: BorderRadius.circular(12),
                       ),
                     ),
@@ -48,7 +48,7 @@ class LoginScreen extends StatelessWidget {
                       hintText: 'Password',
                       hintStyle: const TextStyle(color: Colors.grey),
                       enabledBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.white24),
+                        borderSide: const BorderSide(color: Colors.white),
                         borderRadius: BorderRadius.circular(12),
                       ),
                     ),
