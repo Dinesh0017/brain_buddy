@@ -1,3 +1,4 @@
+import 'package:brain_buddy/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:brain_buddy/config/app_color.dart';
 
@@ -54,26 +55,13 @@ class WelcomeScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 24),
-                  ElevatedButton(
+                  PrimaryButton(
+                    text: 'Get Started',
+                    backgroundColor: AppColors.primary,
+                    textColor: AppColors.textPrimary,
                     onPressed: () {
                       Navigator.pushNamed(context, '/signup-login');
                     },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.primary,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                    ),
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 32,
-                        vertical: 12,
-                      ),
-                      child: Text(
-                        'Get Started',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ),
                   ),
                 ],
               ),
