@@ -1,4 +1,5 @@
 import 'package:brain_buddy/screens/auth/login_screen.dart';
+import 'package:brain_buddy/screens/auth/signup_login_screen.dart';
 import 'package:brain_buddy/screens/auth/welcome_screen.dart';
 import 'package:brain_buddy/screens/notes/notes_screen.dart';
 import 'package:brain_buddy/screens/planner/planner_screen.dart';
@@ -17,7 +18,7 @@ class BrainBuddyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      home: const LoginScreen(),
+      home: const SignUpLoginScreen(),
       routes: {
         '/planner': (context) => const PlannerScreen(),
         '/timer': (context) => const TimerScreen(),
