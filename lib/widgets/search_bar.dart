@@ -12,14 +12,14 @@ Widget customSearchInput() {
       ),
       prefixIcon: Icon(Icons.search, color: AppColors.primary),
       filled: true,
-      fillColor: Colors.white, // Background color inside input
+      fillColor: Colors.white,
       contentPadding: const EdgeInsets.symmetric(vertical: 16),
       enabledBorder: OutlineInputBorder(
         borderSide: BorderSide(color: AppColors.primary),
         borderRadius: BorderRadius.circular(12),
       ),
       focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: AppColors.primary, width: 2),
+        borderSide: BorderSide(color: AppColors.primary, width: 1),
         borderRadius: BorderRadius.circular(12),
       ),
     ),

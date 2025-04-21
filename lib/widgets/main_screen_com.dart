@@ -37,21 +37,10 @@ class MainScreenCom extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-              decoration: BoxDecoration(
-                border: Border.all(color: AppColors.primary),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Row(
-                children: [
-                  customSearchInput(),
-                ],
-              ),
-            ),
+            customSearchInput(),
             const SizedBox(height: 20),
-            // Add more widgets here later for your feed or content
           ],
         ),
       ),
