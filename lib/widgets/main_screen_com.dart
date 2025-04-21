@@ -1,4 +1,5 @@
 import 'package:brain_buddy/config/app_color.dart';
+import 'package:brain_buddy/widgets/feature_card.dart';
 import 'package:brain_buddy/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,7 @@ class MainScreenCom extends StatelessWidget {
         automaticallyImplyLeading: false,
         backgroundColor: AppColors.background,
         elevation: 0,
-        toolbarHeight: 100,
+        toolbarHeight: 80,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -26,15 +27,21 @@ class MainScreenCom extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            Icon(Icons.menu, color: AppColors.primary, size: 30),
+            Icon(Icons.menu, color: AppColors.primary, size: 40),
           ],
         ),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [customSearchInput(), const SizedBox(height: 20)],
+          children: [
+            const SizedBox(height: 20),
+            customSearchInput(),
+            const SizedBox(height: 20),
+            NextSubmitButton (),
+            FeatureCardGrid(),
+          ],
         ),
       ),
       bottomNavigationBar: Padding(
@@ -44,8 +51,7 @@ class MainScreenCom extends StatelessWidget {
           child: Container(
             color: AppColors.primary,
             child: BottomNavigationBar(
-              backgroundColor:
-                  Colors.transparent,
+              backgroundColor: Colors.transparent,
               selectedItemColor: Colors.white,
               unselectedItemColor: Colors.white,
               showSelectedLabels: false,
@@ -53,19 +59,19 @@ class MainScreenCom extends StatelessWidget {
               type: BottomNavigationBarType.fixed,
               items: const [
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.home_max_rounded,size: 40),
+                  icon: Icon(Icons.home_max_rounded, size: 40),
                   label: 'Home',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.notifications_none_rounded,size: 40),
+                  icon: Icon(Icons.notifications_none_rounded, size: 40),
                   label: 'Notifications',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.add_circle_outline,size: 40),
+                  icon: Icon(Icons.add_circle_outline, size: 40),
                   label: 'Add',
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.favorite_border,size: 40),
+                  icon: Icon(Icons.favorite_border, size: 40),
                   label: 'Favorites',
                 ),
               ],
