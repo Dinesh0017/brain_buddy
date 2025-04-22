@@ -20,7 +20,7 @@ class BrainBuddyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
-      home: const MainScreenCom (),
+      home: const HomeScreen  (),
       routes: {
         '/planner': (context) => const PlannerScreen(),
         '/timer': (context) => const TimerScreen(),

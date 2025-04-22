@@ -4,7 +4,9 @@ import 'package:brain_buddy/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
 
 class MainScreenCom extends StatelessWidget {
-  const MainScreenCom({super.key});
+  final List<Widget> children;
+
+  const MainScreenCom({super.key, required this.children});
 
   @override
   Widget build(BuildContext context) {
@@ -35,13 +37,7 @@ class MainScreenCom extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 20),
-            customSearchInput(),
-            const SizedBox(height: 20),
-            NextSubmitButton (),
-            FeatureCardGrid(),
-          ],
+          children: children,
         ),
       ),
       bottomNavigationBar: Padding(
