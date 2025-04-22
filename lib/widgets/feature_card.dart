@@ -6,6 +6,14 @@ class FeatureCardGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<Map<String, dynamic>> features = [
+      {'icon': Icons.bar_chart, 'label': 'Progress', 'route': '/progress'},
+      {'icon': Icons.calendar_today, 'label': 'Planner', 'route': '/planner'},
+      {'icon': Icons.check_circle, 'label': 'Done', 'route': '/done'},
+      {'icon': Icons.photo, 'label': 'Gallery', 'route': '/gallery'},
+      {'icon': Icons.timer, 'label': 'Timer', 'route': '/timer'},
+      {'icon': Icons.note, 'label': 'Notes', 'route': '/notes'},
+    ];
     return GridView.count(
       padding: const EdgeInsets.all(16),
       crossAxisCount: 2,
@@ -14,24 +22,21 @@ class FeatureCardGrid extends StatelessWidget {
       childAspectRatio: 1,
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(), // if inside another scroll view
-      children: [
-        _buildFeatureCard(Icons.bar_chart, 'Progress'),
-        _buildFeatureCard(Icons.calendar_today, 'Planner'),
-        _buildFeatureCard(Icons.check_circle, 'Done'),
-        _buildFeatureCard(Icons.photo, 'Gallery'),
-        _buildFeatureCard(Icons.timer, 'Timer'),
-        _buildFeatureCard(Icons.note, 'Notes'),
-        _buildFeatureCard(Icons.bar_chart, 'Progress'),
-        _buildFeatureCard(Icons.calendar_today, 'Planner'),
-        
-      ],
+      children: features.map((feature) {
+        return GestureDetector(
+          onTap: () => Navigator.pushNamed(context, feature['route']),
+          child: _buildFeatureCard(feature['icon'], feature['label']),
+        );
+      }).toList(),
     );
+
+
   }
 
   Widget _buildFeatureCard(IconData icon, String label) {
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.secondary.withOpacity(0.5) ,
+        color: AppColors.secondary.withOpacity(0.5),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
@@ -43,8 +48,8 @@ class FeatureCardGrid extends StatelessWidget {
             label,
             style: const TextStyle(
               color: Colors.white,
-              fontSize: 24,
-              fontWeight: FontWeight.w600,
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ],
@@ -53,6 +58,41 @@ class FeatureCardGrid extends StatelessWidget {
   }
 }
 
+class ProgressScreen extends StatelessWidget {
+  const ProgressScreen({super.key});
+  @override
+  Widget build(BuildContext context) => Scaffold(body: Center(child: Text('Progress Screen')));
+}
+
+class PlannerScreen extends StatelessWidget {
+  const PlannerScreen({super.key});
+  @override
+  Widget build(BuildContext context) => Scaffold(body: Center(child: Text('Planner Screen')));
+}
+
+class DoneScreen extends StatelessWidget {
+  const DoneScreen({super.key});
+  @override
+  Widget build(BuildContext context) => Scaffold(body: Center(child: Text('Done Screen')));
+}
+
+class GalleryScreen extends StatelessWidget {
+  const GalleryScreen({super.key});
+  @override
+  Widget build(BuildContext context) => Scaffold(body: Center(child: Text('Gallery Screen')));
+}
+
+class TimerScreen extends StatelessWidget {
+  const TimerScreen({super.key});
+  @override
+  Widget build(BuildContext context) => Scaffold(body: Center(child: Text('Timer Screen')));
+}
+
+class NotesScreen extends StatelessWidget {
+  const NotesScreen({super.key});
+  @override
+  Widget build(BuildContext context) => Scaffold(body: Center(child: Text('Notes Screen')));
+}
 
 class NextSubmitButton extends StatefulWidget {
   const NextSubmitButton({super.key});
