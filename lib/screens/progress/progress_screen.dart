@@ -11,7 +11,7 @@ class ProgressScreen extends StatefulWidget {
 }
 
 class _ProgressScreenState extends State<ProgressScreen> {
-  double overallProgress = 0.75;
+  double overallProgress = 0.7;
   double assignmentProgress = 0.6;
   double taskProgress = 0.8;
   int tasksDone = 5;
@@ -36,7 +36,6 @@ class _ProgressScreenState extends State<ProgressScreen> {
                   strokeWidth: 12,
                   backgroundColor: AppColors.secondary.withOpacity(0.3),
                   color: Colors.pinkAccent,
-                  
                 ),
               ),
               Column(
@@ -44,11 +43,19 @@ class _ProgressScreenState extends State<ProgressScreen> {
                 children: [
                   Text(
                     "${(overallProgress * 100).toInt()}%",
-                    style: const TextStyle(fontSize: 38, fontWeight: FontWeight.w900, color: AppColors.primary),
+                    style: const TextStyle(
+                      fontSize: 38,
+                      fontWeight: FontWeight.w900,
+                      color: AppColors.primary,
+                    ),
                   ),
                   const Text(
                     "Completed",
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500, color: AppColors.primary),
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w500,
+                      color: AppColors.primary,
+                    ),
                   ),
                 ],
               ),
@@ -56,10 +63,14 @@ class _ProgressScreenState extends State<ProgressScreen> {
           ),
         ),
         const SizedBox(height: 30),
-        
+
         const Text(
           "Progress Summary",
-          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: AppColors.primary),
+          style: TextStyle(
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+            color: AppColors.primary,
+          ),
         ),
         const SizedBox(height: 20),
 
@@ -80,7 +91,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
             _buildSmallCard(
               icon: Icons.check_circle,
               label: "$tasksDone Tasks\nDone!",
-              color: Colors.pinkAccent,
+              color: AppColors.secondary,
             ),
             _buildSmallCard(
               icon: Icons.emoji_events,
@@ -104,7 +115,11 @@ class _ProgressScreenState extends State<ProgressScreen> {
             children: [
               const Text(
                 "You're doing great! Keep it up!",
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: AppColors.textPrimary,
+                ),
               ),
               const SizedBox(height: 10),
               Expanded(
@@ -115,26 +130,44 @@ class _ProgressScreenState extends State<ProgressScreen> {
                       bottomTitles: AxisTitles(
                         sideTitles: SideTitles(
                           showTitles: true,
+                          interval:1,
                           getTitlesWidget: (value, meta) {
-                            List<String> days = ["S", "M", "T", "W", "T", "F", "S"];
-                            return Text(
-                              days[value.toInt()],
-                              style: const TextStyle(color: Colors.white),
-                            );
+                            const days = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+                            if (value.toInt() >= 0 &&
+                                value.toInt() < days.length) {
+                              return Text(
+                                days[value.toInt()],
+                                style: const TextStyle(
+                                  color: AppColors.textPrimary,
+                                ),
+                              );
+                            } else {
+                              return const SizedBox.shrink();
+                            }
                           },
                           reservedSize: 22,
                         ),
                       ),
-                      leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                      topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                      rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                      leftTitles: AxisTitles(
+                        sideTitles: SideTitles(showTitles: false),
+                      ),
+                      topTitles: AxisTitles(
+                        sideTitles: SideTitles(showTitles: false),
+                      ),
+                      rightTitles: AxisTitles(
+                        sideTitles: SideTitles(showTitles: false),
+                      ),
                     ),
                     borderData: FlBorderData(show: false),
                     lineBarsData: [
                       LineChartBarData(
-                        spots: List.generate(weeklyProgress.length, (index) => FlSpot(index.toDouble(), weeklyProgress[index])),
+                        spots: List.generate(
+                          weeklyProgress.length,
+                          (index) =>
+                              FlSpot(index.toDouble(), weeklyProgress[index]),
+                        ),
                         isCurved: true,
-                        color: Colors.pinkAccent,
+                        color: AppColors.secondary,
                         barWidth: 4,
                         dotData: FlDotData(show: true),
                       ),
@@ -163,7 +196,14 @@ class _ProgressScreenState extends State<ProgressScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(title, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white)),
+                Text(
+                  title,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
                 const SizedBox(height: 8),
                 LinearProgressIndicator(
                   value: progress,
@@ -180,7 +220,11 @@ class _ProgressScreenState extends State<ProgressScreen> {
             child: Text(
               "${(progress * 100).toInt()}%",
               textAlign: TextAlign.right,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white),
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+                color: Colors.white,
+              ),
             ),
           ),
         ],
@@ -188,7 +232,11 @@ class _ProgressScreenState extends State<ProgressScreen> {
     );
   }
 
-  Widget _buildSmallCard({required IconData icon, required String label, required Color color}) {
+  Widget _buildSmallCard({
+    required IconData icon,
+    required String label,
+    required Color color,
+  }) {
     return Expanded(
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 5),
@@ -204,7 +252,10 @@ class _ProgressScreenState extends State<ProgressScreen> {
             Text(
               label,
               textAlign: TextAlign.left,
-              style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ],
         ),

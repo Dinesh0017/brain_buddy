@@ -18,7 +18,16 @@ class MainScreenCom extends StatelessWidget {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Icon(Icons.arrow_back_ios_new_rounded, color: AppColors.primary, size: 40),
+            IconButton(
+              icon: Icon(
+                Icons.arrow_back_ios_new_rounded,
+                color: AppColors.primary,
+                size: 40,
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: Image.asset(
@@ -28,7 +37,6 @@ class MainScreenCom extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            
           ],
         ),
       ),
