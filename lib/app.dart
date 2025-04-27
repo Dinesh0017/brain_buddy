@@ -4,7 +4,7 @@ import 'package:brain_buddy/screens/auth/welcome_screen.dart';
 import 'package:brain_buddy/screens/notes/notes_screen.dart';
 import 'package:brain_buddy/screens/planner/planner_screen.dart';
 import 'package:brain_buddy/screens/progress/progress_screen.dart';
-import 'package:brain_buddy/screens/settings/settings_screen.dart';
+import 'package:brain_buddy/screens/done/done_screen.dart';
 import 'package:brain_buddy/screens/timer/timer_screen.dart';
 import 'package:flutter/material.dart';
 import 'config/app_theme.dart';
@@ -24,7 +24,7 @@ class BrainBuddyApp extends StatelessWidget {
         '/timer': (context) => const TimerScreen(),
         '/notes': (context) => const NotesScreen(),
         '/progress': (context) => const ProgressScreen(),
-        '/settings': (context) => const SettingsScreen(),
+        '/done': (context) => const DoneScreen(),
         '/home': (context) => const HomeScreen(),
         '/signup_login_screen': (context) => const SignUpLoginScreen(),
         '/login': (context) => const LoginScreen(),
