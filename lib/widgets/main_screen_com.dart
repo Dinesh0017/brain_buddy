@@ -1,6 +1,4 @@
 import 'package:brain_buddy/config/app_color.dart';
-import 'package:brain_buddy/widgets/feature_card.dart';
-import 'package:brain_buddy/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
 
 class MainScreenCom extends StatelessWidget {
@@ -20,6 +18,7 @@ class MainScreenCom extends StatelessWidget {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            Icon(Icons.arrow_back_ios_new_rounded, color: AppColors.primary, size: 40),
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: Image.asset(
@@ -29,7 +28,7 @@ class MainScreenCom extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            Icon(Icons.menu, color: AppColors.primary, size: 40),
+            
           ],
         ),
       ),

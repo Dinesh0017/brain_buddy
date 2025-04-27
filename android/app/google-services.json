@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "447296826765",
+    "project_id": "brain-buddy-546c1",
+    "storage_bucket": "brain-buddy-546c1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:447296826765:android:43b86a02442caa87ec61c4",
+        "android_client_info": {
+          "package_name": "com.example.brain_buddy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2WXtWnJnuvFznEM6wUcr3fAnjbRuUKcs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
