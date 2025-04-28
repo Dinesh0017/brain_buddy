@@ -21,7 +21,7 @@ class FeatureCardGrid extends StatelessWidget {
       crossAxisSpacing: 16,
       childAspectRatio: 1,
       shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(), // if inside another scroll view
+      physics: NeverScrollableScrollPhysics(),
       children: features.map((feature) {
         return GestureDetector(
           onTap: () => Navigator.pushNamed(context, feature['route']),

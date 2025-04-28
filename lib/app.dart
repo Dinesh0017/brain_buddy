@@ -1,6 +1,7 @@
 import 'package:brain_buddy/screens/auth/login_screen.dart';
 import 'package:brain_buddy/screens/auth/signup_login_screen.dart';
 import 'package:brain_buddy/screens/auth/welcome_screen.dart';
+import 'package:brain_buddy/screens/gallery/gallery_screen.dart';
 import 'package:brain_buddy/screens/notes/notes_screen.dart';
 import 'package:brain_buddy/screens/planner/planner_screen.dart';
 import 'package:brain_buddy/screens/progress/progress_screen.dart';
@@ -29,6 +30,7 @@ class BrainBuddyApp extends StatelessWidget {
         '/signup_login_screen': (context) => const SignUpLoginScreen(),
         '/login': (context) => const LoginScreen(),
         '/welcome': (context) => const WelcomeScreen(),
+        '/gallery': (context) => const GalleryScreen(),
 
       },
     );
