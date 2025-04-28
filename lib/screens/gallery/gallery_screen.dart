@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:brain_buddy/widgets/main_screen_com.dart';
 
 class GalleryScreen extends StatefulWidget {
@@ -12,6 +13,7 @@ class GalleryScreen extends StatefulWidget {
 
 class _GalleryScreenState extends State<GalleryScreen> {
   final List<File> _images = [];
+
   final ImagePicker _picker = ImagePicker();
 
   Future<void> _pickImage(ImageSource source) async {
@@ -38,78 +40,22 @@ class _GalleryScreenState extends State<GalleryScreen> {
     }
   }
 
-  void _showOptions(int index) {
-    showModalBottomSheet(
-      context: context,
-      builder: (context) => Wrap(
-        children: [
-          ListTile(
-            leading: const Icon(Icons.delete, color: Colors.red),
-            title: const Text('Delete Image'),
-            onTap: () {
-              Navigator.pop(context);
-              _deleteImage(index);
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.update, color: Colors.blue),
-            title: const Text('Update Image'),
-            onTap: () {
-              Navigator.pop(context);
-              _updateImage(index);
-            },
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildActionButton(IconData icon, String label, VoidCallback onTap) {
-    return Column(
-      children: [
-        Ink(
-          decoration: const ShapeDecoration(
-            color: Colors.pinkAccent,
-            shape: CircleBorder(),
-          ),
-          child: IconButton(
-            icon: Icon(icon, color: Colors.white),
-            iconSize: 32,
-            onPressed: onTap,
-          ),
-        ),
-        const SizedBox(height: 8),
-        Text(label, style: const TextStyle(color: Colors.pinkAccent)),
-      ],
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return MainScreenCom(
       children: [
         const SizedBox(height: 20),
-
-        // Buttons Row (Camera / Gallery)
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             _buildActionButton(Icons.camera_alt, "Camera", () => _pickImage(ImageSource.camera)),
-            _buildActionButton(Icons.photo_library, "Gallery", () => _pickImage(ImageSource.gallery)),
+            _buildActionButton(Icons.photo, "Gallery", () => _pickImage(ImageSource.gallery)),
           ],
         ),
-
         const SizedBox(height: 20),
-
-        // Images Grid
         Expanded(
           child: _images.isEmpty
-              ? const Center(
-                  child: Text(
-                    "No images yet!",
-                    style: TextStyle(fontSize: 16, color: Colors.grey),
-                  ),
-                )
+              ? const Center(child: Text("No images yet!"))
               : GridView.builder(
                   padding: const EdgeInsets.all(8),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -133,6 +79,52 @@ class _GalleryScreenState extends State<GalleryScreen> {
                 ),
         ),
       ],
+    );
+  }
+
+  Widget _buildActionButton(IconData icon, String label, VoidCallback onTap) {
+    return Column(
+      children: [
+        Ink(
+          decoration: const ShapeDecoration(
+            color: Colors.pinkAccent,
+            shape: CircleBorder(),
+          ),
+          child: IconButton(
+            icon: Icon(icon, color: Colors.white),
+            iconSize: 32,
+            onPressed: onTap,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Text(label, style: const TextStyle(color: Colors.pinkAccent)),
+      ],
+    );
+  }
+
+  void _showOptions(int index) {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) => Wrap(
+        children: [
+          ListTile(
+            leading: const Icon(Icons.delete, color: Colors.red),
+            title: const Text('Delete Image'),
+            onTap: () {
+              Navigator.pop(context);
+              _deleteImage(index);
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.update, color: Colors.blue),
+            title: const Text('Update Image'),
+            onTap: () {
+              Navigator.pop(context);
+              _updateImage(index);
+            },
+          ),
+        ],
+      ),
     );
   }
 }
