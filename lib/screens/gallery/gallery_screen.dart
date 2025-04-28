@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:brain_buddy/widgets/main_screen_com.dart';
 
 class GalleryScreen extends StatefulWidget {
@@ -13,7 +12,6 @@ class GalleryScreen extends StatefulWidget {
 
 class _GalleryScreenState extends State<GalleryScreen> {
   final List<File> _images = [];
-
   final ImagePicker _picker = ImagePicker();
 
   Future<void> _pickImage(ImageSource source) async {
@@ -42,43 +40,52 @@ class _GalleryScreenState extends State<GalleryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return MainScreenCom(
-      children: [
-        const SizedBox(height: 20),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            _buildActionButton(Icons.camera_alt, "Camera", () => _pickImage(ImageSource.camera)),
-            _buildActionButton(Icons.photo, "Gallery", () => _pickImage(ImageSource.gallery)),
-          ],
-        ),
-        const SizedBox(height: 20),
-        Expanded(
-          child: _images.isEmpty
-              ? const Center(child: Text("No images yet!"))
-              : GridView.builder(
-                  padding: const EdgeInsets.all(8),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    crossAxisSpacing: 8,
-                    mainAxisSpacing: 8,
-                  ),
-                  itemCount: _images.length,
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                      onLongPress: () => _showOptions(index),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(12),
-                        child: Image.file(
-                          _images[index],
-                          fit: BoxFit.cover,
+    return Scaffold(
+      body: MainScreenCom(
+        children: [
+          const SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              _buildActionButton(Icons.camera_alt, "Camera", () => _pickImage(ImageSource.camera)),
+              _buildActionButton(Icons.photo, "Gallery", () => _pickImage(ImageSource.gallery)),
+            ],
+          ),
+          const SizedBox(height: 20),
+          // Use Flexible instead of Expanded
+          Flexible(
+            child: _images.isEmpty
+                ? const Center(
+                    child: Text(
+                      "📷 No images yet!\nStart capturing memories.",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 16, color: Colors.grey),
+                    ),
+                  )
+                : GridView.builder(
+                    padding: const EdgeInsets.all(8),
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      crossAxisSpacing: 8,
+                      mainAxisSpacing: 8,
+                    ),
+                    itemCount: _images.length,
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onLongPress: () => _showOptions(index),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(12),
+                          child: Image.file(
+                            _images[index],
+                            fit: BoxFit.cover,
+                          ),
                         ),
-                      ),
-                    );
-                  },
-                ),
-        ),
-      ],
+                      );
+                    },
+                  ),
+          ),
+        ],
+      ),
     );
   }
 
