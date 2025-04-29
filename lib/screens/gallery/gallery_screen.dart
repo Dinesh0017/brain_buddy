@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:brain_buddy/widgets/main_screen_com.dart';
+import 'package:brain_buddy/config/app_color.dart';
 
 class GalleryScreen extends StatefulWidget {
   const GalleryScreen({super.key});
@@ -38,54 +39,51 @@ class _GalleryScreenState extends State<GalleryScreen> {
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: MainScreenCom(
+  void _showOptions(int index) {
+    showModalBottomSheet(
+      context: context,
+      builder: (context) => Wrap(
         children: [
-          const SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              _buildActionButton(Icons.camera_alt, "Camera", () => _pickImage(ImageSource.camera)),
-              _buildActionButton(Icons.photo, "Gallery", () => _pickImage(ImageSource.gallery)),
-            ],
+          ListTile(
+            leading: const Icon(Icons.delete, color: Color.fromARGB(255, 211, 26, 13)),
+            title: const Text('Delete Image'),
+            onTap: () {
+              Navigator.pop(context);
+              _deleteImage(index);
+            },
           ),
-          const SizedBox(height: 20),
-          // Use Flexible instead of Expanded
-          Flexible(
-            child: _images.isEmpty
-                ? const Center(
-                    child: Text(
-                      "📷 No images yet!\nStart capturing memories.",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 16, color: Colors.grey),
-                    ),
-                  )
-                : GridView.builder(
-                    padding: const EdgeInsets.all(8),
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                      crossAxisSpacing: 8,
-                      mainAxisSpacing: 8,
-                    ),
-                    itemCount: _images.length,
-                    itemBuilder: (context, index) {
-                      return GestureDetector(
-                        onLongPress: () => _showOptions(index),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(12),
-                          child: Image.file(
-                            _images[index],
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      );
-                    },
-                  ),
+          ListTile(
+            leading: const Icon(Icons.update, color: Color.fromARGB(255, 13, 91, 155)),
+            title: const Text('Update Image'),
+            onTap: () {
+              Navigator.pop(context);
+              _updateImage(index);
+            },
           ),
         ],
       ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MainScreenCom(
+      children: [
+        const SizedBox(height: 20),
+        _buildPickButtons(),
+        const SizedBox(height: 20),
+        _buildGalleryGrid(),
+      ],
+    );
+  }
+
+  Widget _buildPickButtons() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        _buildActionButton(Icons.camera_alt, "Camera" , () => _pickImage(ImageSource.camera),),
+        _buildActionButton(Icons.photo, "Gallery", () => _pickImage(ImageSource.gallery)),
+      ],
     );
   }
 
@@ -94,7 +92,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
       children: [
         Ink(
           decoration: const ShapeDecoration(
-            color: Colors.pinkAccent,
+            color: AppColors.secondary,
             shape: CircleBorder(),
           ),
           child: IconButton(
@@ -109,29 +107,39 @@ class _GalleryScreenState extends State<GalleryScreen> {
     );
   }
 
-  void _showOptions(int index) {
-    showModalBottomSheet(
-      context: context,
-      builder: (context) => Wrap(
-        children: [
-          ListTile(
-            leading: const Icon(Icons.delete, color: Colors.red),
-            title: const Text('Delete Image'),
-            onTap: () {
-              Navigator.pop(context);
-              _deleteImage(index);
-            },
+  Widget _buildGalleryGrid() {
+    if (_images.isEmpty) {
+      return const Center(
+        child: Padding(
+          padding: EdgeInsets.only(top: 50),
+          child: Text("No images yet!", style: TextStyle(color: AppColors.primary, fontSize: 18, fontWeight: FontWeight.w600,) ),
+        ),
+      );
+    } else {
+      return SizedBox(
+        height: MediaQuery.of(context).size.height * 0.7,
+        child: GridView.builder(
+          padding: const EdgeInsets.all(8),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+            crossAxisSpacing: 8,
+            mainAxisSpacing: 8,
           ),
-          ListTile(
-            leading: const Icon(Icons.update, color: Colors.blue),
-            title: const Text('Update Image'),
-            onTap: () {
-              Navigator.pop(context);
-              _updateImage(index);
-            },
-          ),
-        ],
-      ),
-    );
+          itemCount: _images.length,
+          itemBuilder: (context, index) {
+            return GestureDetector(
+              onLongPress: () => _showOptions(index),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Image.file(
+                  _images[index],
+                  fit: BoxFit.cover,
+                ),
+              ),
+            );
+          },
+        ),
+      );
+    }
   }
 }
