@@ -29,7 +29,7 @@ class NotificationsScren extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: List.generate(5, (index) {
+      children: List.generate(20, (index) {
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0),
           child: Container(
@@ -39,7 +39,7 @@ class NotificationsScren extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.05),
+                  color: Colors.black.withOpacity(0.1),
                   blurRadius: 6,
                   offset: const Offset(0, 3),
                 ),
