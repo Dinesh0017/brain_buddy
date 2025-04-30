@@ -33,7 +33,7 @@ class DoneScreen extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
         const SizedBox(height: 20),
-        ...completedTasks.map((task) => _buildDoneCard(task)).toList(),
+        ...completedTasks.map((task) => _buildDoneCard(task)),
         const SizedBox(height: 30),
         const Text(
           "You're smashing your goals!",
