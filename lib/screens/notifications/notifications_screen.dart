@@ -1,31 +1,38 @@
+// Inside your file where you use MainScreenCom
+
+import 'package:brain_buddy/widgets/main_screen_com.dart';
+import 'package:brain_buddy/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:brain_buddy/config/app_color.dart';
 
+
 class NotificationsScreen extends StatelessWidget {
-  const NotificationsScreen ({super.key});
+  const NotificationsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.background,
-      appBar: AppBar(
-        title: const Text(
-          'Notifications',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        backgroundColor: AppColors.primary,
-        elevation: 0,
-      ),
-      body: ListView.separated(
-        padding: const EdgeInsets.all(16),
-        itemCount: 5, // You can replace this with real notification data
-        separatorBuilder: (_, __) => const SizedBox(height: 12),
-        itemBuilder: (context, index) {
-          return Container(
+    return MainScreenCom(
+      children: [
+        customSearchInput(),
+        const SizedBox(height: 20),
+        NotificationsScren(),
+      ],
+    );
+  }
+}
+
+// Notification content
+class NotificationsScren extends StatelessWidget {
+  const NotificationsScren({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: List.generate(5, (index) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          child: Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: Colors.white,
@@ -40,7 +47,7 @@ class NotificationsScreen extends StatelessWidget {
             ),
             child: Row(
               children: [
-                Icon(Icons.notifications, color: AppColors.primary, size: 28),
+                Icon(Icons.notifications, color: AppColors.secondary, size: 28),
                 const SizedBox(width: 12),
                 Expanded(
                   child: Text(
@@ -50,9 +57,9 @@ class NotificationsScreen extends StatelessWidget {
                 ),
               ],
             ),
-          );
-        },
-      ),
+          ),
+        );
+      }),
     );
   }
 }
