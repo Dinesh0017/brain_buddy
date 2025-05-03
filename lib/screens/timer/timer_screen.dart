@@ -1,6 +1,6 @@
 import 'dart:async';
+import 'package:brain_buddy/config/app_color.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:brain_buddy/widgets/main_screen_com.dart';
 
 class TimerScreen extends StatefulWidget {
@@ -32,13 +32,10 @@ class _TimerScreenState extends State<TimerScreen> {
   void initState() {
     super.initState();
     _startStopwatchTimer();
-    _initializeTimeZone();
+
   }
 
-  Future<void> _initializeTimeZone() async {
-    final location = await FlutterTimezone.getLocalTimezone();
-    print('Current time zone: $location');
-  }
+
 
   void _startStopwatchTimer() {
     _stopwatchTimer = Timer.periodic(const Duration(milliseconds: 100), (_) {
@@ -107,14 +104,14 @@ class _TimerScreenState extends State<TimerScreen> {
           child: Container(
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
             decoration: BoxDecoration(
-              color: _currentTab == i ? Colors.pink[100] : Colors.grey[200],
+              color: _currentTab == i ? AppColors.primary : Colors.grey[200],
               borderRadius: BorderRadius.circular(10),
             ),
             child: Text(
               tabs[i],
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                color: _currentTab == i ? Colors.pink[800] : Colors.grey[700],
+                color: _currentTab == i ? AppColors.textPrimary : AppColors.primary,
               ),
             ),
           ),
@@ -142,34 +139,59 @@ class _TimerScreenState extends State<TimerScreen> {
     final seconds = elapsed.inSeconds.remainder(60).toString().padLeft(2, '0');
     final milliseconds = (elapsed.inMilliseconds.remainder(1000) ~/ 100).toString();
 
-    return Column(
-      children: [
-        Text('$minutes:$seconds.$milliseconds',
-            style: const TextStyle(fontSize: 48, fontWeight: FontWeight.bold)),
-        const SizedBox(height: 20),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              onPressed: _stopwatch.start,
-              child: const Text("Start"),
-            ),
-            const SizedBox(width: 10),
-            ElevatedButton(
-              onPressed: _stopwatch.stop,
-              child: const Text("Stop"),
-            ),
-            const SizedBox(width: 10),
-            ElevatedButton(
-              onPressed: () {
-                _stopwatch.reset();
-                setState(() {});
-              },
-              child: const Text("Reset"),
+    return Padding(
+      padding: const EdgeInsets.only(top: 110),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.2),
+              spreadRadius: 5,
+              blurRadius: 7,
+              offset: const Offset(0, 1),
             ),
           ],
         ),
-      ],
+        height: 300,
+        width: double.infinity,
+
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 40),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text('$minutes:$seconds.$milliseconds',
+                  style: const TextStyle(fontSize: 80, fontWeight: FontWeight.bold,color: AppColors.primary)),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: _stopwatch.start,
+                    child: const Text("Start", style: TextStyle(color: AppColors.primary)),
+                  ),
+                  const SizedBox(width: 10),
+                  ElevatedButton(
+                    onPressed: _stopwatch.stop,
+                    child: const Text("Stop", style: TextStyle(color: AppColors.primary)),
+                  ),
+                  const SizedBox(width: 10),
+                  ElevatedButton(
+                    onPressed: () {
+                      _stopwatch.reset();
+                      setState(() {});
+                    },
+                    child: const Text("Reset", style: TextStyle(color: AppColors.primary)),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 
