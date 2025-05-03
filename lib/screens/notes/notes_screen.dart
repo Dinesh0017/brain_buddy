@@ -38,6 +38,7 @@ class _NotesScreenState extends State<NotesScreen> {
                 TextField(
                   controller: _controller,
                   maxLines: 3,
+                  cursorColor: AppColors.primary,
                   decoration: const InputDecoration(
                     hintText: "Enter note text",
                     hintStyle: TextStyle(color: Colors.grey),
@@ -166,7 +167,7 @@ class _NotesScreenState extends State<NotesScreen> {
       right: 30,
       child: FloatingActionButton(
         onPressed: onTap,
-        backgroundColor: Colors.pink[600],
+        backgroundColor: AppColors.secondary,
         child: const Icon(Icons.add, size: 30, color: Colors.white),
       ),
     );
@@ -175,10 +176,10 @@ class _NotesScreenState extends State<NotesScreen> {
   Widget _buildNoteCard(int index, Note note) {
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       decoration: BoxDecoration(
-        color: AppColors.secondary.withOpacity(0.5),
-        borderRadius: BorderRadius.circular(12),
+        color: AppColors.secondary.withOpacity(0.3),
+        borderRadius: BorderRadius.circular(10),
       ),
       child: Stack(
         children: [
@@ -186,7 +187,16 @@ class _NotesScreenState extends State<NotesScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               if (note.text != null && note.text!.isNotEmpty)
-                Text(note.text!, style: const TextStyle(fontSize: 16)),
+                Padding(
+                  padding: const EdgeInsets.only(right: 18),
+                  child: Text(
+                    note.text!,
+                    style: const TextStyle(
+                      color: AppColors.primary,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
               if (note.image != null) ...[
                 const SizedBox(height: 10),
                 ClipRRect(
@@ -199,12 +209,13 @@ class _NotesScreenState extends State<NotesScreen> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   IconButton(
-                    icon: const Icon(Icons.edit, color: Colors.blue),
+                    icon: const Icon(Icons.edit, color: AppColors.primary),
                     onPressed:
                         () => _addOrEditNote(existingNote: note, index: index),
                   ),
+                  const SizedBox(width: 3),
                   IconButton(
-                    icon: const Icon(Icons.delete, color: Colors.red),
+                    icon: const Icon(Icons.delete, color: AppColors.primary),
                     onPressed: () => _deleteNote(index),
                   ),
                 ],
@@ -212,14 +223,15 @@ class _NotesScreenState extends State<NotesScreen> {
             ],
           ),
           Positioned(
-            top: 0,
-            right: 0,
+            top: -15,
+            right: -15,
             child: IconButton(
               icon: Icon(
-                note.isImportant ? Icons.star : Icons.star_border,
-                color: note.isImportant ? Colors.amber : Colors.grey,
+                note.isImportant ? Icons.star : Icons.star_border_outlined,
+                color: note.isImportant ? Colors.amber : Colors.white,
               ),
               onPressed: () => _toggleImportant(index),
+              splashRadius: 5,
             ),
           ),
         ],

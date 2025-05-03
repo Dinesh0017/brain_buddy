@@ -1,3 +1,4 @@
+import 'package:brain_buddy/config/app_color.dart';
 import 'package:brain_buddy/screens/auth/login_screen.dart';
 import 'package:brain_buddy/screens/auth/signup_login_screen.dart';
 import 'package:brain_buddy/screens/auth/welcome_screen.dart';
@@ -18,7 +19,17 @@ class BrainBuddyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.lightTheme,
+      theme: ThemeData(
+        primaryColor: AppColors.primary,
+        scaffoldBackgroundColor: AppColors.background,
+        // 👇 Add this to change cursor and selection handle colors
+        textSelectionTheme: const TextSelectionThemeData(
+          cursorColor: AppColors.primary,               // Text cursor color
+          selectionHandleColor: AppColors.primary,      // The purple circle handle
+          selectionColor: Color(0x552196F3),            // Optional: selected text background
+        ),
+        // any other theme settings
+      ),
       home: const HomeScreen  (),
       routes: {
         '/planner': (context) => const PlannerScreen(),
