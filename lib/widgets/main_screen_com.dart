@@ -3,8 +3,10 @@ import 'package:brain_buddy/screens/favorites/favorites_screen.dart';
 import 'package:brain_buddy/screens/home/home_screen.dart';
 import 'package:brain_buddy/screens/notifications/notifications_screen.dart';
 import 'package:brain_buddy/screens/planner/planner_screen.dart';
+import 'package:brain_buddy/screens/profile/profile_screen.dart';
 
 import 'package:flutter/material.dart';
+
 class MainScreenCom extends StatefulWidget {
   final List<Widget> children;
 
@@ -26,16 +28,28 @@ class _MainScreenComState extends State<MainScreenCom> {
     // Navigate to different screens based on the index
     switch (index) {
       case 0:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => HomeScreen()));
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => HomeScreen()),
+        );
         break;
       case 1:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => NotificationsScreen()));
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => NotificationsScreen()),
+        );
         break;
       case 2:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => PlannerScreen()));
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => PlannerScreen()),
+        );
         break;
       case 3:
-        Navigator.push(context, MaterialPageRoute(builder: (_) => FavoritesScreen()));
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => FavoritesScreen()),
+        );
         break;
       default:
         break;
@@ -64,13 +78,23 @@ class _MainScreenComState extends State<MainScreenCom> {
                 Navigator.pop(context);
               },
             ),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: Image.asset(
-                'assets/logo/brain buddy.jpg',
-                height: 60,
-                width: 60,
-                fit: BoxFit.cover,
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ProfileScreen(),
+                  ),
+                );
+              },
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(12),
+                child: Image.asset(
+                  'assets/logo/brain buddy.jpg',
+                  height: 60,
+                  width: 60,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ],
@@ -123,4 +147,3 @@ class _MainScreenComState extends State<MainScreenCom> {
     );
   }
 }
-
