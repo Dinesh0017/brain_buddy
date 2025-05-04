@@ -1,5 +1,5 @@
 import 'package:brain_buddy/config/app_color.dart';
-import 'package:brain_buddy/screens/favorites/favorites_screen.dart';
+import 'package:brain_buddy/screens/favourites/favourites_screen.dart';
 import 'package:brain_buddy/screens/home/home_screen.dart';
 import 'package:brain_buddy/screens/notifications/notifications_screen.dart';
 import 'package:brain_buddy/screens/planner/planner_screen.dart';
@@ -48,7 +48,7 @@ class _MainScreenComState extends State<MainScreenCom> {
       case 3:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (_) => FavoritesScreen()),
+          MaterialPageRoute(builder: (_) => FavoriteScreen()),
         );
         break;
       default:
