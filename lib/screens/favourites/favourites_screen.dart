@@ -33,7 +33,7 @@ class FavoriteScreen extends StatelessWidget {
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold,color:AppColors.primary),
         ),
         const SizedBox(height: 20),
-        ...favoriteItems.map((item) => _buildFavoriteTile(item)).toList(),
+        ...favoriteItems.map((item) => _buildFavoriteTile(item)),
         const SizedBox(height: 20),
       ],
     );

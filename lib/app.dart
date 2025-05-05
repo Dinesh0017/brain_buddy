@@ -10,7 +10,6 @@ import 'package:brain_buddy/screens/progress/progress_screen.dart';
 import 'package:brain_buddy/screens/done/done_screen.dart';
 import 'package:brain_buddy/screens/timer/timer_screen.dart';
 import 'package:flutter/material.dart';
-import 'config/app_theme.dart';
 import 'screens/home/home_screen.dart';
 
 class BrainBuddyApp extends StatelessWidget {

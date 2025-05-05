@@ -102,7 +102,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
           ),
         ),
         const SizedBox(height: 8),
-        Text(label, style: const TextStyle(color: Colors.pinkAccent)),
+        Text(label, style: const TextStyle(color: AppColors.primary, fontSize: 12, fontWeight: FontWeight.w400)),
       ],
     );
   }
