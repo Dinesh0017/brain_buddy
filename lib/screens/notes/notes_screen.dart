@@ -19,7 +19,7 @@ class _NotesScreenState extends State<NotesScreen> {
   void _addOrEditNote({Note? existingNote, int? index}) async {
     String? noteText = existingNote?.text;
     File? noteImage = existingNote?.image;
-    final TextEditingController _controller = TextEditingController(
+    final TextEditingController controller = TextEditingController(
       text: noteText,
     );
 
@@ -36,7 +36,7 @@ class _NotesScreenState extends State<NotesScreen> {
             child: Column(
               children: [
                 TextField(
-                  controller: _controller,
+                  controller: controller,
                   maxLines: 3,
                   cursorColor: AppColors.primary,
                   decoration: const InputDecoration(
@@ -98,7 +98,7 @@ class _NotesScreenState extends State<NotesScreen> {
           actions: [
             TextButton(
               onPressed: () {
-                noteText = _controller.text.trim();
+                noteText = controller.text.trim();
                 Navigator.pop(context);
               },
               child: const Text(
@@ -152,7 +152,7 @@ class _NotesScreenState extends State<NotesScreen> {
                 .asMap()
                 .entries
                 .map((entry) => _buildNoteCard(entry.key, entry.value))
-                .toList(),
+                ,
             const SizedBox(height: 100),
           ],
         ),

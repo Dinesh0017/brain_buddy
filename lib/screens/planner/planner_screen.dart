@@ -93,7 +93,7 @@ Widget _buildCalendar(int selectedDate, Function(int) onDateSelected) {
                 height: 40,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: isSelected ? Colors.pink[600] : Colors.grey[200],
+                  color: isSelected ? AppColors.primary : Colors.grey[200],
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Text(
@@ -120,7 +120,7 @@ Widget _buildAddTaskButton(VoidCallback onTap) {
       width: double.infinity,
       padding: const EdgeInsets.symmetric(vertical: 16),
       decoration: BoxDecoration(
-        color: Colors.pink[600],
+        color: AppColors.primary,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: Colors.pink[100]!),
       ),

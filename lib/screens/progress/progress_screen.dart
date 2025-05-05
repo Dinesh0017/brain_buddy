@@ -11,7 +11,7 @@ class ProgressScreen extends StatefulWidget {
 }
 
 class _ProgressScreenState extends State<ProgressScreen> {
-  double overallProgress = 0.7;
+  double overallProgress = 0.3;
   double assignmentProgress = 0.6;
   double taskProgress = 0.8;
   int tasksDone = 5;
@@ -35,8 +35,9 @@ class _ProgressScreenState extends State<ProgressScreen> {
                   value: overallProgress,
                   strokeWidth: 12,
                   backgroundColor: AppColors.secondary.withOpacity(0.3),
-                  color: Colors.pinkAccent,
+                  color: AppColors.secondary,
                 ),
+              
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -91,12 +92,12 @@ class _ProgressScreenState extends State<ProgressScreen> {
             _buildSmallCard(
               icon: Icons.check_circle,
               label: "$tasksDone Tasks\nDone!",
-              color: AppColors.secondary,
+              color: AppColors.primary.withOpacity(0.6),
             ),
             _buildSmallCard(
               icon: Icons.emoji_events,
               label: "First\nAssignment\nCompleted!",
-              color: Colors.amber,
+              color: AppColors.primary.withOpacity(0.6),
             ),
           ],
         ),
@@ -207,7 +208,7 @@ class _ProgressScreenState extends State<ProgressScreen> {
                 const SizedBox(height: 8),
                 LinearProgressIndicator(
                   value: progress,
-                  color: Colors.pinkAccent,
+                  color: AppColors.secondary,
                   backgroundColor: Colors.white24,
                   minHeight: 8,
                 ),

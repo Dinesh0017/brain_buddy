@@ -336,7 +336,7 @@ class _TimerScreenState extends State<TimerScreen> {
     );
   }
 
-  List<TimeOfDay> _alarmHistory = [];
+  final List<TimeOfDay> _alarmHistory = [];
 
   Widget _buildAlarm() {
     return Padding(

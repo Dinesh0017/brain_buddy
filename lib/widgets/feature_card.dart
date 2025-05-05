@@ -36,7 +36,7 @@ class FeatureCardGrid extends StatelessWidget {
   Widget _buildFeatureCard(IconData icon, String label) {
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.secondary.withOpacity(0.5),
+        color: AppColors.secondary.withOpacity(0.7),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
@@ -139,7 +139,7 @@ class _NextSubmitButtonState extends State<NextSubmitButton> {
               borderRadius: BorderRadius.circular(8),
               child: LinearProgressIndicator(
                 value: progress,
-                backgroundColor: Colors.pink[100],
+                backgroundColor: AppColors.secondary.withOpacity(0.7),
                 valueColor: AlwaysStoppedAnimation<Color>(AppColors.primary),
                 minHeight: 6,
               ),
