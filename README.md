@@ -12,7 +12,7 @@
 
 ## 🎨 Figma UI Design
 
-🎨 [**Figma File**](https://www.figma.com/design/tL21LAmEuRKHOPkpffmzdJ/Car-Rental-Web-Platform?node-id=0-1&t=7i9FlteWQ6md6hUu-1)
+🎨 [**Figma File**][(https://www.figma.com/design/tL21LAmEuRKHOPkpffmzdJ/Car-Rental-Web-Platform?node-id=0-1&t=7i9FlteWQ6md6hUu-1)](https://www.figma.com/design/WIy8YljNflcyJJvwZy87ox/Study-Buddy?node-id=0-1&t=Aa1h6s9qOz3HgXD1-1)
 
 ---
 
