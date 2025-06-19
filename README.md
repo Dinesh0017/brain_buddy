@@ -1,16 +1,64 @@
-# brain_buddy
+# 🧠 BrainBuddy – Study Smarter
 
-A new Flutter project.
+Welcome to **BrainBuddy** — a smart and stylish study planner built with Flutter to help students organize tasks, manage focus sessions, and track their learning progress effectively.
 
-## Getting Started
+This project features beautiful UI, productivity tools like Pomodoro, daily goals, calendar integration, and performance tracking — all packed in a sleek, responsive mobile experience.
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## 📱 App Demo
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+🚀 [**Coming Soon – Live APK or Play Store Link**](#)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+
+## 🎨 Figma UI Design
+
+🎨 [**Figma File**]([https://www.figma.com/design/tL21LAmEuRKHOPkpffmzdJ/BrainBuddy-Study-Planner?node-id=0-1](https://www.figma.com/design/WIy8YljNflcyJJvwZy87ox/Study-Buddy?node-id=0-1&p=f&t=YcsRocmEBRhgDnrO-0)) <!-- Update with real Figma link -->
+
+---
+
+## 🖼️ Preview
+
+| Home Dashboard | Add Task |
+|---------------|----------------|----------|
+|![Home](assets/screenshots/home.png) | ![Add Task](assets/screenshots/add_task.png) |
+
+| Timer | Calendar View | Progress Tracker |
+|----------------|----------------|------------------|
+| ![Timer](assets/screenshots/pomodoro.png) | ![Calendar](assets/screenshots/calendar.png) | ![Progress](assets/screenshots/progress.png) |
+
+---
+
+## ✨ Features
+
+- ✅ Daily to-do/task scheduler
+- ⏱️ Timer with smooth UI
+- 📆 Calendar integration to plan ahead
+- 📊 Track weekly/monthly productivity
+- 🔔 Smart reminders & notifications
+- 🧠 Motivational design for study streaks
+- 💾 Persistent local and/or cloud storage
+
+---
+
+## 🛠️ Tech Stack
+
+- **Flutter** (UI Framework)
+- **Dart** (Language)
+- **Firebase** (for Auth & Firestore)
+- **Shared Preferences** (Local Storage)
+- **Provider / Riverpod** (for state management)
+- **Figma** (for UI design)
+
+---
+
+## 🚀 Getting Started
+
+Clone the repository and run the app locally:
+
+```bash
+git clone https://github.com/yourusername/brainbuddy.git
+cd brainbuddy
+flutter pub get
+flutter run
